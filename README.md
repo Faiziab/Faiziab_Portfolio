@@ -1,12 +1,10 @@
 # Student Portfolio Site
-This is a student portfolio website template designed for placement purposes. 
-You can use this template to showcase your skills, projects, and achievements to potential employers. Please follow the instructions below to get started.
 
 ## How to use:
 
 1. Clone this repository:
     
-       https://github.com/ashiksanyo10/Portfolio_Temp.github.io.git
+       https://github.com/Faiziab/Faiziab_Portfolio.git
 
 2. Edit the templete and Fill in the required fields 
 
