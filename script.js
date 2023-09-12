@@ -61,3 +61,52 @@ const scrollUp = () => {
 }
 
 document.addEventListener('scroll', scrollUp)
+
+
+
+
+
+
+
+
+
+
+const elementsToAnimate = document.querySelectorAll('.fade-in');
+
+const animateElements = () => {
+  elementsToAnimate.forEach((element) => {
+    if (isElementInViewport(element)) {
+      element.classList.add('active');
+    }
+  });
+};
+
+const isElementInViewport = (el) => {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+};
+
+window.addEventListener('scroll', animateElements);
+
+
+
+window.addEventListener('scroll', () => {
+	const scrollY = window.scrollY;
+	const parallaxElements = document.querySelectorAll('.parallax-bg');
+  
+	parallaxElements.forEach((element) => {
+	  const speed = element.getAttribute('data-speed');
+	  element.style.transform = `translateY(${scrollY * speed}px)`;
+	});
+  });
+  
+
+
+
+
+  
