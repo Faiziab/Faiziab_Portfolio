@@ -108,5 +108,23 @@ window.addEventListener('scroll', () => {
 
 
 
-
+// Function to perform the typing animation
+const typeText = (text, elementId) => {
+	const element = document.getElementById(elementId);
+	element.textContent = '';
+	element.style.display = 'inline';
+	for (let i = 0; i < text.length; i++) {
+	  setTimeout(() => {
+		element.textContent += text[i];
+	  }, i * 100); // Adjust the speed by changing the timeout delay
+	}
+  };
   
+  // Trigger the typing animation when the page loads
+  window.addEventListener('load', () => {
+	typeText('Hi, I am Faiziab Khan', 'typed-text');
+  });
+  
+ 
+
+
