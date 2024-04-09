@@ -341,7 +341,8 @@ main {
 }
 
 .project:hover {
-  transform: translateY(-7px);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .project__description {
@@ -377,6 +378,7 @@ main {
 
 .skills__list-item {
   margin: 0.5em;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .contact {
@@ -475,3 +477,13 @@ main {
 
 
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

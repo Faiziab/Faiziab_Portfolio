@@ -12,12 +12,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
-
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Portfolio" />
+    <!--<nav class="nav center" aria-label="Main Navigation">-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -70,25 +68,26 @@
     <main>
       <!-- About -->
       
+      <!--<a href="#" aria-label="View project source code" class="link link--icon">-->
+
 
       <div class="about center">
         <h1 id="typed-text">Hi, I am <span class="about__name">Faiziab Khan</span></h1>
 
         <h2 class="about__role">Aspiring DataScientist</h2>
-        <p class="about__desc"> 
-        Hey there! I'm a quick learner who's all
-        about getting things done and working
-        with others. I like tackling new challenges
-        and always eager to learn more. You can
-        count on me to deliver impactful results,
-        and I thrive in dynamic environments.🚀😄
+        <p class="about__desc" style="text-align: justify;"> 
+          Hey there! I'm a Results-driven individual with a proactive mindset,
+          dedicated to achieving goals collaboratively. Adept at tackling challenges 
+          and consistently seeking opportunities to expand skills and knowledge.
+          I like tackling new challenges and always eager to learn more. Committed 
+          to delivering impactful outcomes and thriving in dynamic work environments. .🚀😄
         </p> <!-- about you -->
         <br>
         <a href="mailto:faiziabkhan1@gmail.com">Mail: faiziabkhan1@gmail.com </a><p> Contact: +91 7007433025</p>  
       </br>
       
         <div class="about__contact center">
-          <a href="https://drive.google.com/file/d/1ImHyVpap8UoRPrYFudZKFX3mo5yqKwzF/view?usp=sharing" target="_blank"  > <!-- drive link for resume-->
+          <a href="https://drive.google.com/file/d/1BZTvweINMjMBtF62S381B33wab5ND68A/view?usp=sharing" target="_blank"  > <!-- drive link for resume-->
             <span class="btn btn--outline">Resume</span> 
           </a>
 
@@ -116,43 +115,16 @@
         <h2 class="section__title"><div class="hover-scale">Projects</div></h2>
 
         <div class="projects__grid">
-          <div class="project">
-            <h3>Face Mask Detection Using Deep-Learning</h3>
-            <p class="project__description">
-              <div class="fade-in">
-              Developed a real time face mask detection system using deep learning techniques. Utilized python, kerns, OpenCV and MobileNet. Trained the Model on a anotated dataset.
-            </div>
-            </p>
-            <ul class="project__stack">
-              <li class="project__stack-item"><div class = "hover-scale">Python</div></li>
-              <li class="project__stack-item"><div class = "hover-scale">Jupyter Notebook</div></li>
-              <!--  <li class="project__stack-item"></li>  -->
-            </ul>
-
-            <a
-              href="" target="_blank"
-              aria-label="source code"
-              class="link link--icon"
-            > 
-
-            <!-- PROJECT LINKS AND SORUCE CODE -->
-
-              <i aria-hidden="true" class="fab fa-github"></i>
-            </a>
-            <a
-              href=""
-              aria-label="live preview"
-              class="link link--icon"
-            >
-              <i aria-hidden="true" class="fas fa-external-link-alt"></i>
-            </a>
-          </div>
+        
 
           <div class="project">
-            <h3>Object Detection Using YOLOv5 and Python</h3>
+            <h3>Face Mask Detection Using Deep Learning</h3>
             <p class="project__description"> <div class="fade-in">
-              Developed a precise object detection system using YOLOv5 in python, achieving high accuracy and robust performance.
-            </div></p>
+              Developed a real-time face mask detection system using Python, TensorFlow, OpenCV, and MobileNet.
+              Trained the model on an annotated dataset and achieved an accuracy score of 98%.
+              Implemented data preprocessing techniques, including image resizing, normalization, and augmentation.
+              Utilized transfer learning and fine-tuned a pre-trained MobileNet model for efficient and accurate predictions.
+              Integrated the model into a real-time video stream for practical use cases, such as monitoring public spaces for compliance with COVID-19 safety protocols.</div></p>
             </p>
             <ul class="project__stack">
               <li class="project__stack-item"><div class = "hover-scale">Python</div></li>
@@ -160,50 +132,69 @@
             </ul>
 
             <a
-              href="" target="_blank"
+              href="https://github.com/Faiziab/Face-Mask-Detection" target="_blank"
               aria-label="" target="_blank"
               class="link link--icon"
             >
               <i aria-hidden="true" class="fab fa-github"></i>
             </a>
+          </div>
+
+
+
+
+          <div class="project">
+            <h3>Visualizing the Unseen: Enhancing Image Accessibility through Image Captioning</h3>
+            <p class="project__description"> <div class="fade-in">
+              An ingenious online platform tailored for individuals facing accessibility challenges,
+              delivering a 40% boost in seamless interactions through innovative interface solutions.
+              Led the charge in creating an innovative online platform that enhanced accessibility for 253M 
+              users navigating the digital realm with unique requirements worldwide, executing comprehensive 
+              testing to attain a 90% success rate in seamless user experiences.
+            </div></p>
+            </p>
+            <ul class="project__stack">
+              <li class="project__stack-item"><div class = "hover-scale">Python</div></li>
+              <li class="project__stack-item"><div class = "hover-scale">Computer Vision</div></li>
+              <li class="project__stack-item"><div class = "hover-scale">deep learning</div></li>
+              <li class="project__stack-item"><div class = "hover-scale">NLP</div></li>
+            </ul>
+
             <a
-              href=""
-              aria-label="live preview"
+              href="https://github.com/Faiziab/Image_Captioning" target="_blank"
+              aria-label="" target="_blank"
               class="link link--icon"
             >
-              <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+              <i aria-hidden="true" class="fab fa-github"></i>
             </a>
           </div>
+
+
+
 
           <div class="project">
             <h3>EmoBot : Real Time Emotion Detection With Voice Activated Assistant</h3>
             <p class="project__description"> <div class="fade-in">
-              Emobot is an NLP project that analyzes user-inputted text to
-              accurately detect conveyed emotions. Utilizing deep learning
-              techniques and a diverse dataset, Emobot provides valuable
-              insights into the emotional content of text data through an
-              intuitive interface.
+              Designed and implemented a machine learning model capable of accurately recognizing human emotions
+               from text inputs, leveraging deep learning techniques such as (CNNs) and (RNNs) with an overall 
+               accuracy of 92% . Collected and curated a diverse dataset of tweets encompassing 7 emotional states, 
+               ensuring the models ability to generalize across a wide range of human expressions .
               </div>
             </p>
             <ul class="project__stack">
               <li class="project__stack-item"><div class = "hover-scale">Python</div></li>
               <li class="project__stack-item"><div class = "hover-scale">Jupyter Notebook</div></li>
+              <li class="project__stack-item"><div class = "hover-scale">NLP</div></li>
+              <li class="project__stack-item"><div class = "hover-scale">deep learning</div></li>
               <li class="project__stack-item"></li>
             </ul>
 
             <a
-              href="" target="_blank"
+              href="https://github.com/Faiziab/EmoBot" target="_blank"
               aria-label="" target="_blank"
               class="link link--icon"
             >
               <i aria-hidden="true" class="fab fa-github"></i>
-            </a>
-            <a
-              href=""
-              aria-label="live preview"
-              class="link link--icon"
-            >
-              <i aria-hidden="true" class="fas fa-external-link-alt"></i>
             </a>
           </div>
         </div>
@@ -223,14 +214,7 @@
           <li class="project__stack-item">Machine Learning</li>
         </ul>
 
-        <a
-          href=""  
-          aria-label=""
-          class="link link--icon"
 
-        > <!-- Include the certification links and  -->
-          <i aria-hidden="true" class="fab fa-github"></i>
-        </a>
         <a
           href="https://drive.google.com/file/d/1yDpPvyy4OmfVxZTLwrffDrTMWbhdLC67/view?usp=sharing"
           aria-label="live preview"
@@ -260,22 +244,20 @@
       </section>
 
   
-      <!-- Contact 
       <section class="section contact center" id="contact">
         <h2 class="section__title">Contact</h2>
-        <a href="mailto:ashiksanyo01@gmail.com">
+        <a href="mailto:faiziabkhan1@gmail.com">
           <span class="btn btn--outline">Email me</span>
         </a>
       </section>
     </main>
-    -->
 
     <footer class="footer">
       <a
         href="" 
         class="link footer__link"
       >  <!-- Host it on git and use the git repo link in above href-->
-        Created By Faiziab Khan!
+        Created By <u>Faiziab Khan!</u> ❤️
       </a>
     </footer>
 
