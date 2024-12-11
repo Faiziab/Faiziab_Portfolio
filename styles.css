@@ -98,8 +98,6 @@ button {
   }
 }
 
-
-
 /*TEST CASE*/
 
 /* fade in animation*/
@@ -115,7 +113,6 @@ button {
 }
 
 /* hover animation*/
-
 .hover-scale {
   transition: transform 0.1s ease-in-out;
 }
@@ -123,8 +120,6 @@ button {
 .hover-scale:hover {
   transform: scale(1.1);
 }
-
-
 
 /* rotating */
 .rotate {
@@ -134,12 +129,6 @@ button {
 .rotate.active {
   transform: rotate(360deg);
 }
-
-
-
-
-
-
 
 /*===================
   buttons and links
@@ -325,19 +314,30 @@ main {
 }
 
 .projects__grid {
-  max-width: 1100px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
   grid-gap: 2em;
+  max-width: 1100px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.projects__grid::before,
+.projects__grid::after {
+  content: '';
+  grid-column: 1 / -1;
 }
 
 .project {
+  display: flex;
+  flex-direction: column;
   padding: 2em;
   margin: 0 auto;
   text-align: center;
   box-shadow: var(--shadow);
   transition: transform 0.2s linear;
+  height: 100%; /* Ensure all projects have equal height */
 }
 
 .project:hover {
@@ -347,6 +347,7 @@ main {
 
 .project__description {
   margin-top: 1em;
+  flex-grow: 1; /* Allow description to fill available space */
 }
 
 .project__stack {
@@ -364,7 +365,8 @@ main {
 }
 
 .project .link--icon {
-  margin-left: 0.5em;
+  margin-top: auto; /* Push github icon to bottom */
+  align-self: center;
 }
 
 .skills__list {
@@ -447,6 +449,10 @@ main {
     margin-top: 2em;
   }
 
+  .projects__grid {
+    grid-template-columns: 1fr;
+  }
+
   .footer {
     padding: 2em;
     margin-top: 3em;
@@ -474,8 +480,6 @@ main {
     width: 100%;
   }
 }
-
-
 
 @keyframes fadeIn {
   0% {
