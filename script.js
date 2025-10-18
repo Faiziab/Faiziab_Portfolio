@@ -334,9 +334,9 @@ function setupAdmin() {
     
     // Show success message
     if (saveSuccess) {
-      showNotification('Blog post published and synced to GitHub!', 'success');
+      showNotification('✅ Blog post published and synced to GitHub! Available on all devices.', 'success');
     } else {
-      showNotification('Blog post saved locally (GitHub sync failed)', 'warning');
+      showNotification('⚠️ Blog post saved locally. GitHub sync failed - check console for details.', 'warning');
     }
   });
 }
@@ -424,9 +424,9 @@ async function deleteBlogPost(id) {
     loadAdminPosts();
     
     if (saveSuccess) {
-      alert('Post deleted and synced to GitHub!');
+      alert('✅ Post deleted and synced to GitHub! Changes visible on all devices.');
     } else {
-      alert('Post deleted locally (GitHub sync failed)');
+      alert('⚠️ Post deleted locally. GitHub sync failed - check console for details.');
     }
   }
 }

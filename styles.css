@@ -1479,6 +1479,16 @@ main {
   color: #4CAF50;
 }
 
+.notification--warning {
+  border-left-color: #ffc107;
+  background: #fff3cd;
+  color: #856404;
+}
+
+.notification--warning i {
+  color: #ffc107;
+}
+
 .notification i {
   font-size: 1.2rem;
 }
