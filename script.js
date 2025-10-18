@@ -137,22 +137,14 @@ let blogPosts = [];
 
 // Load blog posts
 async function loadBlogPosts() {
-  // First try to load from localStorage (for posts created via admin)
-  const savedData = localStorage.getItem('blogData');
-  if (savedData) {
-    const data = JSON.parse(savedData);
-    blogPosts = data.posts.filter(post => post.published);
-    return;
-  }
+  // Use GitHub sync to get the latest data
+  const blogData = await githubSync.syncBlogData();
   
-  // Fallback to JSON file (only works on web server, not file://)
-  try {
-    const response = await fetch('blog-data.json');
-    const data = await response.json();
-    blogPosts = data.posts.filter(post => post.published);
-  } catch (error) {
-    console.log('Loading from JSON file failed (normal when testing locally)');
-    // Initialize with empty array if no data available
+  if (blogData && blogData.posts) {
+    blogPosts = blogData.posts.filter(post => post.published);
+    console.log('✅ Loaded blog posts for admin:', blogPosts.length, 'posts');
+  } else {
+    console.log('⚠️ No blog data available for admin');
     blogPosts = [];
   }
 }
@@ -306,7 +298,7 @@ function setupAdmin() {
   });
 
   // Create blog post
-  blogCreateForm.addEventListener('submit', function(e) {
+  blogCreateForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const title = document.getElementById('blog-title').value;
@@ -328,9 +320,9 @@ function setupAdmin() {
     // Add to blog posts
     blogPosts.unshift(newPost);
     
-    // Save to localStorage
+    // Save to GitHub and localStorage
     const blogData = { posts: blogPosts };
-    localStorage.setItem('blogData', JSON.stringify(blogData));
+    const saveSuccess = await githubSync.saveBlogData(blogData);
     
     // Update display
     loadAdminPosts();
@@ -341,7 +333,11 @@ function setupAdmin() {
     previewSection.classList.add('hidden');
     
     // Show success message
-    showNotification('Blog post published successfully!', 'success');
+    if (saveSuccess) {
+      showNotification('Blog post published and synced to GitHub!', 'success');
+    } else {
+      showNotification('Blog post saved locally (GitHub sync failed)', 'warning');
+    }
   });
 }
 
@@ -416,18 +412,22 @@ function loadAdminPosts() {
 }
 
 // Delete blog post
-function deleteBlogPost(id) {
+async function deleteBlogPost(id) {
   if (confirm('Are you sure you want to delete this post?')) {
     blogPosts = blogPosts.filter(post => post.id !== id);
     
-    // Save to localStorage
+    // Save to GitHub and localStorage
     const blogData = { posts: blogPosts };
-    localStorage.setItem('blogData', JSON.stringify(blogData));
+    const saveSuccess = await githubSync.saveBlogData(blogData);
     
     // Update displays
     loadAdminPosts();
     
-    alert('Post deleted successfully!');
+    if (saveSuccess) {
+      alert('Post deleted and synced to GitHub!');
+    } else {
+      alert('Post deleted locally (GitHub sync failed)');
+    }
   }
 }
 

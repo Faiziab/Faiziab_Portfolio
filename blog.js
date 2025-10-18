@@ -31,41 +31,20 @@ const fallbackPosts = [
 async function loadAllBlogPosts() {
   console.log('🚀 Starting to load blog posts...');
   
-  // First try to load from localStorage (for posts created via admin)
-  const savedData = localStorage.getItem('blogData');
-  if (savedData) {
-    try {
-      const data = JSON.parse(savedData);
-      console.log('📦 Raw localStorage data:', data);
-      allBlogPosts = data.posts.filter(post => post.published);
-      filteredPosts = [...allBlogPosts];
-      console.log('✅ Loaded from localStorage:', allBlogPosts.length, 'posts');
-      console.log('📋 Posts data:', allBlogPosts);
-      renderAllBlogPosts();
-      updateStats();
-      return;
-    } catch (e) {
-      console.log('❌ Error parsing localStorage data:', e);
-    }
-  }
+  // Use GitHub sync to get the latest data
+  const blogData = await githubSync.syncBlogData();
   
-  // Try to fetch from JSON file
-  try {
-    console.log('📡 Trying to fetch from JSON file...');
-    const response = await fetch('blog-data.json');
-    const data = await response.json();
-    allBlogPosts = data.posts.filter(post => post.published);
+  if (blogData && blogData.posts) {
+    allBlogPosts = blogData.posts.filter(post => post.published);
     filteredPosts = [...allBlogPosts];
-    console.log('✅ Loaded from JSON:', allBlogPosts.length, 'posts');
+    console.log('✅ Loaded blog posts:', allBlogPosts.length, 'posts');
+    console.log('📋 Posts data:', allBlogPosts);
     renderAllBlogPosts();
     updateStats();
-  } catch (error) {
-    console.log('⚠️ Could not load from JSON file, using fallback data');
-    console.log('Error details:', error);
-    // Use fallback data
+  } else {
+    console.log('⚠️ No blog data available, using fallback');
     allBlogPosts = fallbackPosts.filter(post => post.published);
     filteredPosts = [...allBlogPosts];
-    console.log('✅ Loaded fallback posts:', allBlogPosts.length, 'posts');
     renderAllBlogPosts();
     updateStats();
   }
