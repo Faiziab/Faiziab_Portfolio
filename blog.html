@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog - Faiziab Khan's thoughts on AI, Data Science, and Technology">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/fa62c117c7.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Blog - Faiziab Khan</title>
+</head>
+<body class="light" id="top">
+    <header class="header center">
+        <h3>
+            <a href="index.html" class="link">
+                {FK}.
+            </a>
+        </h3>
+
+        <nav class="nav center">
+            <ul class="nav__list center">
+                <li class="nav__list-item">
+                    <a class="link link--nav" href="index.html#projects">Projects</a>
+                </li>
+                <li class="nav__list-item">
+                    <a class="link link--nav" href="index.html#skills">Skills</a>
+                </li>
+                <li class="nav__list-item">
+                    <a class="link link--nav" href="index.html#Internship">Internship</a>
+                </li>
+                <li class="nav__list-item">
+                    <a class="link link--nav" href="#blog">Blog</a>
+                </li>
+            </ul>
+
+            <button type="button" aria-label="toggle theme" class="btn btn--icon">
+                <i aria-hidden="true" id="btn-theme" class="fas fa-moon"></i>
+            </button>
+
+            <button type="button" aria-label="toggle navigation" class="btn btn--icon nav__hamburger">
+                <i aria-hidden="true" class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Blog Hero Section -->
+        <section class="blog-hero center">
+            <div class="blog-hero__content">
+                <h1 class="blog-hero__title">My Blog</h1>
+                <p class="blog-hero__subtitle">Thoughts on AI, Data Science, and Technology</p>
+                <div class="blog-hero__stats">
+                    <div class="stat">
+                        <span class="stat__number" id="total-posts">0</span>
+                        <span class="stat__label">Articles</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Blog Posts Grid -->
+        <section class="blog-posts">
+            <div class="blog-posts__container">
+                <div class="blog-posts__grid" id="blog-posts-grid">
+                    <!-- Blog posts will be loaded here -->
+                </div>
+                <div class="blog-posts__loading" id="blog-loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading posts...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup -->
+        <section class="newsletter center">
+            <div class="newsletter__container">
+                <h2>Stay Updated</h2>
+                <p>Get notified when I publish new articles about AI, Data Science, and Technology.</p>
+                <form class="newsletter__form" id="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn--outline">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="index.html" class="link footer__link">
+            Created By <u>Faiziab Khan!</u> ❤️
+        </a>
+    </footer>
+
+    <div class="scroll-container">
+        <div class="scroll-top">
+            <a aria-label="Scroll up" href="#top">
+                <i aria-hidden="true" class="fas fa-arrow-up"></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="blog.js"></script>
+</body>
+</html>
