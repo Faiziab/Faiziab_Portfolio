@@ -31,18 +31,49 @@ const fallbackPosts = [
 async function loadAllBlogPosts() {
   console.log('🚀 Starting to load blog posts...');
   
-  // Use GitHub sync to get the latest data
-  const blogData = await githubSync.syncBlogData();
-  
-  if (blogData && blogData.posts) {
-    allBlogPosts = blogData.posts.filter(post => post.published);
+  try {
+    // Try to load from blog-data.json file first (for GitHub Pages)
+    try {
+      const response = await fetch('blog-data.json');
+      if (response.ok) {
+        const blogData = await response.json();
+        if (blogData && blogData.posts && blogData.posts.length > 0) {
+          allBlogPosts = blogData.posts.filter(post => post.published);
+          filteredPosts = [...allBlogPosts];
+          console.log('✅ Loaded blog posts from blog-data.json:', allBlogPosts.length, 'posts');
+          renderAllBlogPosts();
+          updateStats();
+          return;
+        }
+      }
+    } catch (e) {
+      console.log('ℹ️ Could not load blog-data.json, trying GitHub sync...');
+    }
+    
+    // Try GitHub sync as fallback
+    if (typeof githubSync !== 'undefined') {
+      const blogData = await githubSync.syncBlogData();
+      
+      if (blogData && blogData.posts && blogData.posts.length > 0) {
+        allBlogPosts = blogData.posts.filter(post => post.published);
+        filteredPosts = [...allBlogPosts];
+        console.log('✅ Loaded blog posts from GitHub:', allBlogPosts.length, 'posts');
+        renderAllBlogPosts();
+        updateStats();
+        return;
+      }
+    }
+    
+    // Final fallback to hardcoded posts
+    console.log('⚠️ Using fallback posts');
+    allBlogPosts = fallbackPosts.filter(post => post.published);
     filteredPosts = [...allBlogPosts];
-    console.log('✅ Loaded blog posts:', allBlogPosts.length, 'posts');
-    console.log('📋 Posts data:', allBlogPosts);
     renderAllBlogPosts();
     updateStats();
-  } else {
-    console.log('⚠️ No blog data available, using fallback');
+    
+  } catch (error) {
+    console.error('❌ Error loading blog posts:', error);
+    // Use fallback posts on any error
     allBlogPosts = fallbackPosts.filter(post => post.published);
     filteredPosts = [...allBlogPosts];
     renderAllBlogPosts();
